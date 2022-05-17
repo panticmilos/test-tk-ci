@@ -6,7 +6,6 @@ name: Run tests on all platforms
 on:
   # Trigger the workflow on push but only for the master branch
   push:
-    branches:
   # Trigger the workflow on pull requests, but reveal no secrets, do not use pull_request_target, see:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target
   pull_request:
@@ -35,7 +34,7 @@ jobs:
 
       matrix:
         os: [ "macos-latest", "windows-latest", "ubuntu-18.04", "ubuntu-20.04",  "macos-10.15" ]
-        python-version: [ 3.6, 3.7, 3.8, 3.9, 3.10 ]
+        python-version: [ 3.6, 3.7, 3.8, 3.9, '3.10' ]
         test-name:
           - integration-test
 
@@ -56,4 +55,4 @@ jobs:
           COVERALLS_FLAG_NAME: ${{ matrix.test-name }}
           COVERALLS_PARALLEL: true
         run: |
-          python -m tkinter -c 'tkinter._test()'
+          python -c 'import tkinter; window=tkinter.Tk(className="matplotlib")'
