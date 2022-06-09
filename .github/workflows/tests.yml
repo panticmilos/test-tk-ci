@@ -24,12 +24,5 @@ jobs:
 
       - name: Test
         run: |
-          brew install tcl-tk
-          brew install pyenv  # skip if you already have pyenv installed
-          export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
-          export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
-          export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
-          export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
-          export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$(brew --prefix tcl-tk)/include' \
-                                        --with-tcltk-libs='-L$(brew --prefix tcl-tk)/lib -ltcl8.6 -ltk8.6'"
+          brew install python-tk
           python -c 'import tkinter; window=tkinter.Tk(className="matplotlib")'
