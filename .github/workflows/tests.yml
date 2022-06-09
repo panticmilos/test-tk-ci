@@ -24,5 +24,5 @@ jobs:
 
       - name: Test
         run: |
-          brew install python-tk
+          brew install python3-tk
           python -c 'import tkinter; window=tkinter.Tk(className="matplotlib")'
